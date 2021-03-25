@@ -1,1 +1,1 @@
-Django Project START!
+# Django Project START!

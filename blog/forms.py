@@ -1,9 +1,9 @@
 from django import forms
-from .models import Post
+from .models import users
 
-class PostForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
 
     class Meta:
-
-        model = Post
-        fields = ['title','author','content']
+        model = users
+        # fields = ['user_id','password','name','email']
+        fields = "__all__"

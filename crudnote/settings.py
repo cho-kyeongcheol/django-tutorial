@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'crudnote.urls'
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'crudnote.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'crudnote.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'djangoDB',               
+        'USER': 'dev',                       
+        'PASSWORD': 'password',               
+        'HOST': '192.168.33.70',                  
+        'PORT': '3306',         
     }
 }
 
@@ -121,6 +126,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    'static'
-]
+#정적파일이 위치한 경로들을 지정하는 설정 항목
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

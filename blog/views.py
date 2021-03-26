@@ -13,11 +13,20 @@ def home(request):
     # posts = Post.objects    
     return render(request, 'index.html')
 
+
+def regist(request):
+# posts = Post.objects    
+    return render(request, 'regist.html')
+
+def login(request):
+# posts = Post.objects    
+    return render(request, 'login.html')
+
 @csrf_exempt
 def user_insert(request):
     print('USERINSERT@!#@#@')
-    qd = request.POST
-    print('qd =>', qd)
+    QueryDict = request.POST
+    print('QueryDict =>', QueryDict)
     id = request.POST['id']
     pw = request.POST['pw']
     name = request.POST['name']
@@ -28,23 +37,12 @@ def user_insert(request):
     print('name =>', name)
     print('email =>', email)
 
-    if request.method == 'POST':
-        print('post!!')
-        else:
-            print('else!!')
-
-        # form = UserForm(request.POST)
-        # print('11111111111')
-            # if form.is_valid(self):
-            #     print('222222222222')
-            #     else :
-            #         print('ELSESESELELESLSEL')
-                # form.save()
-            #     print('3333333333')
-            #     return redirect('index')
-            #     print('444444444444')
-            # form = UserForm()
-            # print('5555555555')
+    # Feedback 객체 생성
+    userInsert = users(user_id = id, password= pw, name=name , email = email)
+    print('userInsert =>', userInsert)
+    # 새 객체 INSERT
+    userInsert.save()
+    print('#####')
         
     return render(request, 'index.html',{'form': form})
 

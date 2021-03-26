@@ -3,6 +3,7 @@ from django.urls import reverse
 from .models import users
 from .forms import UserForm
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, JsonResponse, Http404
 
 # from blog.models import users
 
@@ -10,17 +11,24 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
-    # posts = Post.objects    
     return render(request, 'index.html')
 
 
 def regist(request):
-# posts = Post.objects    
     return render(request, 'regist.html')
 
 def login(request):
-# posts = Post.objects    
     return render(request, 'login.html')
+
+def userlist(request):
+    print('show!') 
+    userlists = users.objects.all()  
+    print('userlists=>', userlists)
+    return render(request, 'userlist.html',{'userlists':userlists})
+
+def show(request):     
+    print('userlists=>', userlists)
+    return render(request,"userlist.html")  
 
 @csrf_exempt
 def user_insert(request):
@@ -44,7 +52,7 @@ def user_insert(request):
     userInsert.save()
     print('#####')
         
-    return render(request, 'index.html',{'form': form})
+    return JsonResponse({"data": "success"})
 
 def post_create(request):
     

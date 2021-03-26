@@ -6,9 +6,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('regist', views.regist, name='regist'),
     path('login', views.login, name='login'),
-    path('<int:pk>', views.post_detail, name='detail'),
-    path('<int:pk>/update', views.post_update, name='update'),
-    path('<int:pk>/delete', views.post_delete, name='delete'),
+    path('userlist', views.userlist, name='userlist'),
+    path('show', views.show, name='show'),
+    
     path('user_insert', views.user_insert, name='user_insert'),
 
 

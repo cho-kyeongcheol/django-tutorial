@@ -19,7 +19,7 @@
     <nav>
       <span><a href="{% url 'regist' %}">회원가입</a></span>
       <span><a href="{% url 'login' %}">로그인</a></span>
-      <span><a href="/#">회원수정</a></span>
+      <span><a href="{% url 'userlist' %}">회원수정</a></span>
     </nav>
   </header>
 </div>
@@ -31,7 +31,7 @@
 {% endblock %}
 
 
-{% block content %}
+{% block index %}
 {% endblock %}
 
 <h3>base.html(footer)</h3>

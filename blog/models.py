@@ -2,7 +2,7 @@ from django.db import models
 
 
 class users(models.Model):
-    
+    idx = models.AutoField(auto_created=True, primary_key=True),
     user_id = models.CharField(max_length=45)
     password = models.CharField(max_length=45)
     name = models.CharField(max_length=45) #사용자가 직접 입력하지 않아도 자동으로 시간 받아오기

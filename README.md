@@ -17,3 +17,10 @@ $ python manage.py runserver # http://127.0.0.1:8000/
 ```
 https://velog.io/@ash3767/django-%EC%97%90%EB%9F%AC-%EB%AA%A8%EC%9D%8C
 ```
+
+```
+Forbidden (CSRF token missing or incorrect.): /userlogin
+
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+```

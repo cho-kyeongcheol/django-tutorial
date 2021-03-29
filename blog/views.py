@@ -5,14 +5,12 @@ from .forms import UserForm
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse, Http404
 
-# from blog.models import users
-
-
-
 
 def home(request):
+    print('request =>',request)
+    print('request.session=>',request.session)
+    print('request.session.session_key=>',request.session.session_key)
     return render(request, 'index.html')
-
 
 def regist(request):
     return render(request, 'regist.html')
@@ -20,15 +18,25 @@ def regist(request):
 def login(request):
     return render(request, 'login.html')
 
+@csrf_exempt
+def userlogin(request):
+    print('login!!!')
+    id = request.POST['id']
+    pw = request.POST['pw']
+    return HttpResponse('bad')
+
+# def userview(request):
+# return render(request, 'userview.html')
+
 def userlist(request):
+    print('request =>',request)
+    print('request.session=>',request.session)
+    print('request.session.session_key=>',request.session.session_key)    
     print('show!') 
     userlists = users.objects.all()  
     print('userlists=>', userlists)
     return render(request, 'userlist.html',{'userlists':userlists})
 
-def show(request):     
-    print('userlists=>', userlists)
-    return render(request,"userlist.html")  
 
 @csrf_exempt
 def user_insert(request):
@@ -54,17 +62,6 @@ def user_insert(request):
         
     return JsonResponse({"data": "success"})
 
-def post_create(request):
-    
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-
-        else:
-            form = PostForm()
-        return render(request, 'postcreate.html', {'form': form})
 
 
 def post_detail(request, pk):

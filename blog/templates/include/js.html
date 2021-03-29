@@ -1,36 +1,6 @@
 {% load static %}
 
-<script>
-    function regist(){
-        console.log('click!!')
-        var id = $('#inputId').val();
-        var pw = $('#inputPw').val();
-        var name = $('#inputName').val();
-        var email = $('#inputEmail').val();
-        console.log('id=>',id)
-        // var obj = {};
-       // Create Ajax Call
-       $.ajax({
-            type: 'POST',
-            url: '{% url 'user_insert' %}',
-            data: {                
-                'id': id,
-                'pw': pw,
-                'name': name,
-                'email': email
-            },
-            dataType: 'json',
-            success: function (data) {
-                console.log('success')
-            },
-            error: function (e) {
-                console.log("ERROR : ", e);
-                console.log('fail')
-            }
-        });
 
-    }
-</script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 

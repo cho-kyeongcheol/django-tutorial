@@ -18,8 +18,14 @@ def home(request):
     return render(request, 'login.html')
 
 def index(request):
-    
-    print(request.session.session_key)
+    if request.user.is_authenticated:
+        print('authenticate!')
+        pass
+        # do something if user is logged in
+    else:
+        print('else authenticate!')
+        pass
+    # do something if user is logged_out
 
     session_id = request.session.session_key
     test = request.session['test']
@@ -81,15 +87,19 @@ def login(request):
                 return redirect('/')
             else:
                 print('ELSE CHECKPASSWORD')
-                response_data['error'] = "비밀번호를 틀렸습니다."
+                response_data['error'] = "비밀번호를 틀렸습니다."   
 
-    print('#request =>',request)
-    print('#request.session=>',request.session)
-    print('#request.session.@session_key=>',request.session.session_key)
-    user_id = request.session.get('user')
-    print('#user_id =>', user_id)
+    key = request.session.session_key
+    print('key =>', key)
 
-    return render(request, 'index.html', response_data)
+    content ={
+        'user'  :  'zmzm123',
+        'users' : key,
+        'qpqp' : 'qpqp1234'
+    }
+    print('contet ->', content)
+
+    return render(request,'index.html', {'response_data': response_data, 'content' : content }) 
 
 @csrf_exempt
 def userlogin(request):

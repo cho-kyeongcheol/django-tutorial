@@ -15,9 +15,10 @@ def home(request):
     #     myuser_info = users.objects.get(pk=id)  #pk : primary key
     #     return HttpResponse(myuser_info.user_id)   # 로그인을 했다면, username 출력
 
-    return render(request, 'index.html')
+    return render(request, 'login.html')
 
-def regist(request):
+def index(request):
+    
     print(request.session.session_key)
 
     session_id = request.session.session_key
@@ -31,8 +32,14 @@ def regist(request):
     print('test =>', test)
     print('alal=>', alal)
 
+
+
+    return render(request, 'index.html', contents)
+
+def regist(request):
     
-    return render(request, 'regist.html', contents)
+    
+    return render(request, 'regist.html')
 
 @csrf_exempt
 def login(request):

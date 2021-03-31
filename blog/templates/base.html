@@ -15,7 +15,7 @@
 {% include "include/js.html"%}
 
 <header>
-    <h1><a href="/#">BASE.html</a></h1>
+    <h1><a href="{% url 'index' %}">BASE.html</a></h1>
     <nav>
       <span><a href="{% url 'regist' %}">회원가입</a></span>
       <span><a href="{% url 'login' %}">로그인</a></span>

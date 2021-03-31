@@ -15,6 +15,7 @@ $ python manage.py runserver # http://127.0.0.1:8000/
 ### session 관리
 ```
 session_id = request.session.session_key
+
 # 넣기
 request.session['test'] = "hahaha" 
 
@@ -22,11 +23,14 @@ request.session['test'] = "hahaha"
 test = request.session['test']
 test = request.session.get('test') 
 
+# 담기
 contents = {
     'session_id' : session_id,
     'test': test
 }
 
+# template로 전달
+return render(request, 'regist.html', contents)
 ```
 
 

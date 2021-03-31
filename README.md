@@ -12,15 +12,33 @@ $ python manage.py startapp <app name> # app 생성
 $ python manage.py runserver # http://127.0.0.1:8000/
 
 ```
+### session 관리
+```
+session_id = request.session.session_key
+# 넣기
+request.session['test'] = "hahaha" 
 
-#### 에러 모음
+# 빼기
+test = request.session['test']
+test = request.session.get('test') 
+
+contents = {
+    'session_id' : session_id,
+    'test': test
+}
+
 ```
-https://velog.io/@ash3767/django-%EC%97%90%EB%9F%AC-%EB%AA%A8%EC%9D%8C
-```
+
 
 ```
 Forbidden (CSRF token missing or incorrect.): /userlogin
 
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
+```
+
+
+#### 에러 모음
+```
+https://velog.io/@ash3767/django-%EC%97%90%EB%9F%AC-%EB%AA%A8%EC%9D%8C
 ```

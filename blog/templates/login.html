@@ -5,13 +5,17 @@
 
     <h1>login.html</h1>
 
+    <form method="POST" action="{% url 'login' %}" >
     <label>id</label>
-    <input type='text' id='loginId'><br>
+    <input type='text' id='loginId' name=userid><br>
     <label>pw</label>
-    <input type='text' id='loginPw'><br>
+    <input type='text' id='loginPw' name=userpw><br>
+    <input type="submit" value="sign up">
+
+</form>
   
 
-    <button onclick="login()">로그인</button>
+    <button onclick="login()">ajax로그인</button>
     
 
 </div>
@@ -34,7 +38,7 @@
                 console.log('로그인 성공!')
             },
             error: function (e) {
-                console.log('로그인 실패!')
+                console.log('로그인')
                 console.log("ERROR : ", e);
             }
         });

@@ -12,14 +12,17 @@
 
 </head>
 <body>
-{% include "include/js.html"%}
+  {% include "include/js.html"%}
 
 <header>
     <h1><a href="{% url 'index' %}">BASE.html</a></h1>
     <nav>
+
+      <span><a href="{% url 'datatable' %}">DataTable</a></span>
       <span><a href="{% url 'regist' %}">회원가입</a></span>
       <span><a href="{% url 'login' %}">로그인</a></span>
       <span><a href="{% url 'userlist' %}">회원수정</a></span>
+      <span><a href="{% url 'logout' %}">로그아웃</a></span>
     </nav>
   </header>
 </div>
@@ -30,6 +33,8 @@
 {% block login %}
 {% endblock %}
 
+{% block datatable %}
+{% endblock %}
 
 {% block index %}
 {% endblock %}
@@ -38,6 +43,7 @@
 
 {% block javascript %}
 {% endblock %}
+
 
 </body>
 </html>

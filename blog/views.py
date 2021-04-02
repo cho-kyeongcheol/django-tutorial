@@ -6,10 +6,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse, Http404
 from django.contrib import auth
 from django.contrib.auth.hashers import check_password
+from django.core import serializers
 
 
 def home(request):
+    subject = "math"    
+    
+
     request.session['test'] = "hahaha"
+    request.session['subject'] = subject
+    print('@@session.sub =>', request.session['subject'] )
     
     # if user_id :
     #     myuser_info = users.objects.get(pk=id)  #pk : primary key
@@ -18,34 +24,31 @@ def home(request):
     return render(request, 'login.html')
 
 def index(request):
-    if request.user.is_authenticated:
-        print('authenticate!')
-        pass
-        # do something if user is logged in
-    else:
-        print('else authenticate!')
-        pass
-    # do something if user is logged_out
 
-    session_id = request.session.session_key
-    test = request.session['test']
-    alal = request.session.get('test')
+    return render(request, 'index.html')
 
-    contents = {
-        'session_id' : session_id,
-        'test': test
-    }
-    print('test =>', test)
-    print('alal=>', alal)
+def logout(request):
 
+    return render(request, 'index.html')
+    
+def datatable(request):
 
+    return render(request, 'datatable.html')
 
-    return render(request, 'index.html', contents)
+def usertable(request):
+    userlists = users.objects.all()  
+    print('## userlists =>' , userlists)
+    json = serializers.serialize('json', userlists)
+    
+    print('## json => ', json)
+    return HttpResponse(json, content_type='application/json')
+
 
 def regist(request):
     
-    
     return render(request, 'regist.html')
+
+
 
 @csrf_exempt
 def login(request):
@@ -89,17 +92,29 @@ def login(request):
                 print('ELSE CHECKPASSWORD')
                 response_data['error'] = "비밀번호를 틀렸습니다."   
 
+    session_id = request.session.session_key    
+    test = request.session['test']    
+    alal = request.session.get('test')
+    subjectName = request.session['subject']      
+
+    contents = {
+        'session_id' : session_id,
+        'test': test,
+        'subject': subjectName
+    }
+
     key = request.session.session_key
     print('key =>', key)
-
+    subject = "math"
     content ={
         'user'  :  'zmzm123',
         'users' : key,
         'qpqp' : 'qpqp1234'
+
     }
     print('contet ->', content)
 
-    return render(request,'index.html', {'response_data': response_data, 'content' : content }) 
+    return render(request,'index.html', {'response_data': response_data, 'content' : content ,'contents' : contents}) 
 
 @csrf_exempt
 def userlogin(request):
@@ -114,9 +129,6 @@ def userlogin(request):
 # return render(request, 'userview.html')
 
 def userlist(request):
-    print('request =>',request)
-    print('request.session=>',request.session)
-    print('request.session.session_key=>',request.session.session_key)    
     print('show!') 
     userlists = users.objects.all()  
     print('userlists=>', userlists)

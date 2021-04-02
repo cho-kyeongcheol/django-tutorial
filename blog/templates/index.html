@@ -9,13 +9,20 @@
     <h2 class='index'>index.html</h2>
 
     <p>
-        sessionID: <strong>{{ session_id }}</strong>
-    </p>
-    <p>
-        test: <strong>{{ test }}</strong>
+        contents: <strong>{{ contents }}</strong>
     </p>
 
-    response_data : {{response_data}} <br>
+    <p>
+        sessionID: <strong>{{ contents.session_id }}</strong>
+    </p>
+    <p>
+        test: <strong>{{ contents.test }}</strong>
+    </p>
+    <p>
+        과목: <strong>{{ contents.subject }}</strong>
+    </p>
+
+    response_data : {{response_data.error}} <br>
     content.user : {{content.user}} <br>
     users : {{content.users}} <br>
     qpqp : {{content.qpqp}} <br>

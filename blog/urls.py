@@ -10,6 +10,9 @@ urlpatterns = [
     path('userlist', views.userlist, name='userlist'),
     path('userlogin', views.userlogin, name='userlogin'),
     path('login', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
+    path('datatable', views.datatable, name='datatable'),
+    path('usertable', views.usertable, name='usertable'),
     # path('userview', views.userview, name='userview'),
     # path('show', views.show, name='show'),
     

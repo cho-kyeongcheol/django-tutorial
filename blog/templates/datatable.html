@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block datatable %}
+
+<div class="container">
+
+    <h1>DataTable</h1>
+
+
+
+<table class="type11" id="deviceTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>수정/삭제</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+
+      <td>gg</td>
+    </tbody>
+</table>
+
+
+<p>DATA : {{data.user_id}}</p>
+<p>TEST_DATA : {{test_data.user_id}}</p>
+
+
+<br>
+<br>
+<a href="/#" class="btn btn-primary">Add New Record</a>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" class="init">
+    
+    $(document).ready(function() {
+        console.log('## working ##')
+         $('#deviceTable').dataTable( {
+             "processing": true,
+             "ajax": {
+                 "processing": true,
+                 "url": "{% url 'usertable' %}",
+                 "dataSrc": ""
+             },
+
+             "columns": [
+                     { "data": "fields.user_id" },
+                     { "data": "fields.name" },
+                     { "data": "fields.email" },
+                     
+                 ]
+         } );
+     } );
+
+</script>
+
+
+
+
+
+
+
+{% endblock %}

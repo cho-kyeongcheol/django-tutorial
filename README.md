@@ -42,6 +42,50 @@ from django.views.decorators.csrf import csrf_exempt
 ```
 
 
+
+### DataTable
+##### ajax
+``` js
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" class="init">
+    
+    $(document).ready(function() {
+        console.log('## working ##')
+         $('#deviceTable').dataTable( {
+             "processing": true,
+             "ajax": {
+                 "processing": true,
+                 "url": "{% url 'usertable' %}",
+                 "dataSrc": ""
+             },
+
+             "columns": [
+                     { "data": "fields.user_id" },
+                     { "data": "fields.name" },
+                     { "data": "fields.email" },
+                 ]
+         } );
+     } );
+
+</script>
+
+```
+#### views.py
+``` python
+    
+def usertable(request):
+    userlists = users.objects.all()  
+    print('## userlists =>' , userlists)
+    json = serializers.serialize('json', userlists)
+    
+    print('## json => ', json)
+    return HttpResponse(json, content_type='application/json')
+
+```
+
+
+
 #### 에러 모음
 ```
 https://velog.io/@ash3767/django-%EC%97%90%EB%9F%AC-%EB%AA%A8%EC%9D%8C

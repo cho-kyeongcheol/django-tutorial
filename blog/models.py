@@ -11,5 +11,13 @@ class users(models.Model):
     def __str__(self): # idx 사용자가 입력한대로 String 받아오기
         return self.user_id
 
+class audiofiles(models.Model):
+    id = models.AutoField(primary_key=True)
+    audio_script = models.TextField(null=True)
+
+class Song(models.Model):
+    name = models.CharField(max_length=125)
+    audio_file = models.FileField()
+
 
 # Create your models here.

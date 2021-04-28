@@ -127,5 +127,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+FILE_UPLOAD_DIR = '/static/assets/uploads/'
+
 #정적파일이 위치한 경로들을 지정하는 설정 항목
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

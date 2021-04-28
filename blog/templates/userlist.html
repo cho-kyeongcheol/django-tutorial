@@ -19,12 +19,14 @@
     <tbody>
         {% for userlist in userlists %}
         <tr>
-            <td>{{ userlist.user_id }}</td>
+            <td>
+                <a href="{% url 'userdetail' userlist.id %">{{ userlist.user_id }}</a>
+            </td> 
             <td>{{ userlist.name }}</td>
-            <td>{{ userlist.email }}</td>
+            <td>{{ userlist.email }}</td>            
             <td>
                 <span class="glyphicon glyphicon-pencil">Edit</span></a>
-                <a href="/#">Delete</a>
+                <a href="#">Delete</a>
             </td>
         </tr>
         {% endfor %}

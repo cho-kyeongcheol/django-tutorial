@@ -85,8 +85,20 @@ def usertable(request):
 ```
 
 
-
-#### 에러 모음
+## django 정보
+##### .filter()
 ```
+해당 메소드는 DB에서 filter를 통해 원하는 조건의 데이터가 유무에 따라 True, False를 반환하는 메소드이다.
+```
+##### render, redirect 
+```
+ render 는 템플릿을 불러오고, redirect 는 URL로 이동합니다. 
+```
+#### 참고사이트 
+```
+에러 모음
 https://velog.io/@ash3767/django-%EC%97%90%EB%9F%AC-%EB%AA%A8%EC%9D%8C
+
+django ORM
+https://blog.naver.com/dudwo567890/220924729927
 ```

@@ -13,11 +13,12 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('datatable', views.datatable, name='datatable'),
     path('usertable', views.usertable, name='usertable'),
+    path('userdetail/<int:id>', views.userdetail, name='userdetail'),
     # path('userview', views.userview, name='userview'),
     # path('show', views.show, name='show'),
     
     path('user_insert', views.user_insert, name='user_insert'),
 
-
+    path('upload_file', views.upload_file, name='upload_file'),
  
 ]

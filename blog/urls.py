@@ -20,5 +20,7 @@ urlpatterns = [
     path('user_insert', views.user_insert, name='user_insert'),
 
     path('upload_file', views.upload_file, name='upload_file'),
+    
+    path('upload_file', views.upload_file, name='upload_file'),
  
 ]

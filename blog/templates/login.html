@@ -5,17 +5,35 @@
 
     <h1>login.html</h1>
 
-    <form method="POST" action="{% url 'login' %}" >
+    <!-- <form method="POST" action="{% url 'login' %}" >
     <label>id</label>
     <input type='text' id='loginId' name=userid><br>
     <label>pw</label>
     <input type='text' id='loginPw' name=userpw><br>
     <input type="submit" value="sign up">
 
-</form>
+    </form> 
   
 
     <button onclick="login()">ajax로그인</button>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="myfile" />
+        <input type="submit" name="submit" value="Upload" />
+    </form> -->
+
+    <br>
+
+    <form action="upload_file" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file" />
+        <br />
+        <input type="submit" name="submit" value="Submit" />
+        </form>
+
+        <audio controls>
+            <source src="../templates/media/test2.wav" type="audio/mpeg">
+        </audio>
     
 
 </div>
@@ -24,24 +42,24 @@
         var id = $('#loginId').val();
         var pw = $('#loginPw').val();        
         console.log('id=>',id)
+        console.log('pw=>',pw)
         // var obj = {};
        // Create Ajax Call
-       $.ajax({
-            type: 'POST',
-            url: '{% url 'userlogin' %}',
-            data: {                
+       $.post("userlogin", {           
                 'id': id,
-                'pw': pw                
-            },
-            dataType: 'json',
-            success: function (data) {
-                console.log('로그인 성공!')
-            },
-            error: function (e) {
-                console.log('로그인')
-                console.log("ERROR : ", e);
-            }
-        });
+                'pw': pw,                
+       }).done(function(data){
+        // alert('성공')
+        
+
+        // location.href = "index";
+       }).fail(function(error){
+        // alert('실패')
+        console.log('error =>', error)
+       })
+
+
+                  
 
     }
 </script> 
